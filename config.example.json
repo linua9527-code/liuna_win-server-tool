@@ -1,0 +1,34 @@
+{
+  "rdp": {
+    "enabled": true,
+    "port": 3389,
+    "require_nla": true,
+    "remote_addresses": ["Any"],
+    "configure_lockout": true,
+    "lockout_threshold": 5,
+    "lockout_duration_minutes": 15,
+    "lockout_reset_minutes": 15
+  },
+  "time_zone": "China Standard Time",
+  "language": {
+    "enabled": true,
+    "tag": "zh-CN",
+    "install_if_missing": false,
+    "package_cab": "",
+    "copy_to_system": false
+  },
+  "password": {
+    "change": false,
+    "username": ""
+  },
+  "cleanup": {
+    "rdp_history": true,
+    "rdp_credentials": true,
+    "recent_files": true,
+    "temp_files": true,
+    "event_logs": true
+  },
+  "schedule": {
+    "daily_at": "03:00"
+  }
+}
