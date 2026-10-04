@@ -23,8 +23,11 @@ jobs:
         run: |
           $files = @(Get-ChildItem -Filter *.go -Recurse | ForEach-Object { $_.FullName })
           $unformatted = @(gofmt -l $files)
-          if ($LASTEXITCODE -ne 0 -or $unformatted.Count -gt 0) {
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ($unformatted.Count -gt 0) {
+            Write-Output '以下文件未通过 gofmt；格式差异如下：'
             $unformatted
+            gofmt -d $unformatted
             exit 1
           }
       - name: Vet

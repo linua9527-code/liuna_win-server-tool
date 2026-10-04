@@ -77,6 +77,8 @@ win-server-tool.exe schedule remove
 
 推送任意分支或提交 PR 会执行格式检查、`go vet`、配置校验与只读 Windows 集成测试，再构建 Windows x64 EXE 和 SHA256 校验文件，结果可从 Actions 的 Artifacts 下载。推送 `v*` 标签会额外创建 GitHub Release 并上传 EXE 与校验文件；仅发布任务申请 `contents: write` 权限。
 
+仓库通过 `.gitattributes` 统一文本文件为 LF 换行，`.editorconfig` 约定 UTF-8 编码，避免 Windows Git 的自动 CRLF 转换导致 `gofmt` 检查失败。格式检查失败时会输出实际差异。
+
 ```powershell
 git tag v0.1.0
 git push origin v0.1.0
